@@ -545,6 +545,7 @@ void dhcpv6_reset_stats(void)
 }
 
 static uint32_t dhcpv6_generate_iface_iaid(const char *ifname) {
+#if 0
 	uint8_t hash[16] = {0};
 	uint32_t iaid;
 	md5_ctx_t md5;
@@ -559,6 +560,11 @@ static uint32_t dhcpv6_generate_iface_iaid(const char *ifname) {
 	iaid |= hash[3];
 
 	return iaid;
+#endif
+//	uint32_t id = if_nametoindex(ifname);
+//	if (id > 0)
+//		return id;
+	return 1;
 }
 
 int init_dhcpv6(const char *ifname)
